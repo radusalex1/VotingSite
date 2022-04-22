@@ -1,0 +1,32 @@
+<div>
+  <p>
+    Shound mankind colonize mars?
+  </p>
+  <div class="italic">
+    <p>Agree:{{AgreedVoters}}</p>
+    <p>Disagree:{{DisagreedVoters}}</p>
+  </div>
+  <div *ngIf="!clickedResetVotes;then templateName1 else templateName2"></div>
+  <ng-template #templateName1>
+    <app-voter *ngFor="let voter of voters"
+      [name]="voter.name"
+      [agreedVotesInput]="AgreedVoters"
+      [disagreedVotesInput]="DisagreedVoters"
+      (agreedVotes)="ImplementAgree($event)"
+      (disagreedVotes)="ImplementDisagree($event)">
+    </app-voter>
+  </ng-template>
+  <div>
+    <ng-template #templateName2>
+      <app-voter *ngFor="let voter of voters"
+        [name]="voter.name"
+        [agreedVotesInput]="AgreedVoters"
+        [disagreedVotesInput]="DisagreedVoters"
+        (agreedVotes)="ImplementAgree($event)"
+        (disagreedVotes)="ImplementDisagree($event)">
+      </app-voter>
+    </ng-template>
+
+    <button (click)="ResetVotes()">Reset Votes</button>
+  </div>
+</div>

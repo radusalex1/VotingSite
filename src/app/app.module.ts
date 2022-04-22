@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { VotingPanelComponent } from './voting-panel/voting-panel.component';
+import { VoterComponent } from './voter/voter.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    VotingPanelComponent,
+    VoterComponent
   ],
   imports: [
     BrowserModule,
