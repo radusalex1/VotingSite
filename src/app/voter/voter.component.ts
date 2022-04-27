@@ -12,6 +12,7 @@ export class VoterComponent implements OnInit {
   @Input() name: string = "placeholder";
   @Input() agreedVotesInput: number = 0;
   @Input() disagreedVotesInput: number = 0;
+  @Input() code:number=-1;
 
   @Output() agreedVotes = new EventEmitter<number>();
   @Output() disagreedVotes = new EventEmitter<number>();
@@ -22,21 +23,27 @@ export class VoterComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  AgreeVote() {
+  Vote(value:boolean)
+  {
+    this.clickDisagree=true;
+    this.clickedAgree=true;
 
-    this.clickDisagree = true;
-    this.clickedAgree = true;
-
-    this.agreedVotesInput += 1;
-    this.agreedVotes.emit(this.agreedVotesInput);
+    if(value)
+    {
+      this.agreedVotesInput += 1;
+      this.agreedVotes.emit(this.agreedVotesInput);
+    }
+    else
+    {
+      this.disagreedVotesInput += 1;
+      this.disagreedVotes.emit(this.disagreedVotesInput);
+    }
   }
 
-  DisagreeVote() {
-    this.clickDisagree = true;
-    this.clickedAgree = true;
-
-    this.disagreedVotesInput -= 1;
-    this.disagreedVotes.emit(this.disagreedVotesInput);
+  callMe(value:number)
+  {
+    this.clickDisagree=false;
+    this.clickedAgree=false;
   }
 
 }

@@ -1,7 +1,5 @@
 <div>
-  <div>Name:{{name}}</div>
-  <div>
-    <button [disabled]="clickedAgree" (click)="AgreeVote()">Agree</button>
-    <button [disabled]="clickDisagree"(click)="DisagreeVote()">Disagree</button>
-  </div>
+  <div>Name: {{name}}</div>
+  <button [disabled]="clickedAgree" (click)="Vote(true)">Agree</button>
+  <button [disabled]="clickDisagree"(click)="Vote(false)">Disagree</button>
 </div>

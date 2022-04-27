@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { VoterComponent } from './../voter/voter.component';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 @Component({
   selector: 'app-voting-panel',
   templateUrl: './voting-panel.component.html',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class VotingPanelComponent implements OnInit {
 
   constructor() {  }
+
+  @ViewChildren(VoterComponent) VoterComponentList !: QueryList<VoterComponent>;
 
   voters=[
     {id:1,name:'Mr.IQ'},
@@ -31,9 +34,14 @@ export class VotingPanelComponent implements OnInit {
 
   ResetVotes(){
 
-    this.clickedResetVotes==false?this.clickedResetVotes=true:this.clickedResetVotes=false;
     this.AgreedVoters=0;
     this.DisagreedVoters=0;
+    this.CallMyChild();
+  }
+  CallMyChild(){
+      this.VoterComponentList.forEach(element=>{
+        element.callMe(element.code);
+      })
   }
 }
 
